@@ -2,11 +2,23 @@
   "name": "auto-form-filler",
   "version": "1.0.0",
   "main": "./dist/main/main.js",
+  "build": {
+  "files": [
+    "dist/main/**/*",
+    "dist/renderer/**/*",
+    "package.json"
+  ],
+  "win": {
+    "icon": "build/icon.ico",
+    "signAndEditExecutable": false,
+    "verifyUpdateCodeSignature": false
+  }
+},
   "type": "module",
   "scripts": {
     "start": "tsc && electron .", 
-    "dev:react": "vite",
-    "dev:electron":"electron",
+    "dev": "vite",
+    "electron":"electron .",
     "build": "vite build",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1",

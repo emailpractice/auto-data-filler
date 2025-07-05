@@ -20,6 +20,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+    console.log(__dirname)
 app.on('ready',() => {
 const mainWindow = new BrowserWindow({
   width: 1280,
@@ -27,8 +28,9 @@ const mainWindow = new BrowserWindow({
   webPreferences: {
     contextIsolation: true,
     nodeIntegration: false,
-    preload: path.join(__dirname, 'preload.js'), 
-  },
+    preload: path.join(__dirname, 'preload.cjs'), 
+  }
+
 });
   mainWindow.loadURL('http://localhost:5173');
   // 正式版才是跑檔案 開發的時候跑url 可以即時更新畫面
@@ -39,7 +41,7 @@ const mainWindow = new BrowserWindow({
 
 
 ipcMain.handle('fill-formA', async (event, data:number[][]) => {
-  console.log('main.ts 收到資料:', data);
+  console.log('main.ts got the infor!:', data);
     // 這裡你可以放 Playwright 邏輯，或其他處理
   });
 
